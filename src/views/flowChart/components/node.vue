@@ -39,11 +39,6 @@ export default {
     computed: {
         nodeContainerClass () {
             return `ef-node-container ef-mode-${this.node.type} ${this.activeNode.nodeId === this.node.id ? 'ef-node-active' : ''}`;
-            // {
-            //     'ef-node-container': true,
-            //     'ef-node-active': this.activeNode.nodeId === this.node.id,
-            //     `ef-mode-${subMenu.type}`: true,
-            // };
         },
         // 节点容器样式
         nodeContainerStyle () {
@@ -76,7 +71,6 @@ export default {
                 left: this.$refs.node.style.left,
                 top: this.$refs.node.style.top
             });
-            // this.$emit('update:node', nodeNow);
             this.$emit('updateNode', nodeNow);
         }
     }

@@ -46,7 +46,7 @@ import flowNode from './components/node';
 import flowNodeForm from './components/node_form';
 import nodeMenu from './components/node_menu';
 import lodash from 'lodash';
-import { getDataB, getDataA } from './components/data_B';
+import { getDataA } from './components/data_B';
 const sourceEndpoint = {
     endpoint: 'Dot',
     paintStyle: {
@@ -81,8 +81,6 @@ const stateColors = {
         hoverPain: '#67c23a'
     }
 };
-const nodeDefW = 300; // 每个节点默认宽度
-const nodeDefH = 180; // 每个节点默认宽度
 export default {
     data () {
         return {
@@ -206,30 +204,6 @@ export default {
             this.data.lineList.map((line) => {
                 this.drawLine(line);
             });
-            this.$nextTick(function () {
-                this.loadEasyFlowFinish = true;
-                // 初始绘线后获取当前自适应连接点（自适应绘线 连接端点出现偏差） 按照获取连接点重新绘线
-                this.data.lineList = this.data.lineList.reduce((list, line) => {
-                    if(!line.anchor) {
-                      let conn = this.jsPlumb.getConnections({
-                        source: line.from,
-                        target: line.to
-                      })[0];
-                      const strTrans = (str) => { const Str = `${str.slice(0, 1).toLocaleUpperCase()}${str.slice(1)}`; return Str; };
-                      let anchor = null;
-                      let endpoint1 = conn.endpoints[0]._continuousAnchorEdge;
-                      let endpoint2 = conn.endpoints[1]._continuousAnchorEdge;
-                      if (endpoint1 && endpoint2) {
-                        anchor = [strTrans(endpoint1), strTrans(endpoint2)];
-                      }
-                      line.anchor = anchor;
-                      this.jsPlumb.deleteConnection(conn);
-                      this.drawLine(line);
-                    }
-                    list.push(line);
-                    return list;
-                }, []);
-            });
         },
         // 初始化节点
         initNode (node) {
@@ -296,25 +270,6 @@ export default {
                 stroke: stateColors[state] ? stateColors[state].hoverPain : '#b0b2b5',
                 strokeWidth: 2
             });
-        },
-        // 删除激活的元素
-        deleteElement () {
-            if (this.activeType === 'node') {
-                this.deleteNode(this.activeNode.nodeId);
-            } else if (this.activeType === 'line') {
-                this.$confirm('确定删除所点击的线吗?', '提示', {
-                    confirmButtonText: '确定',
-                    cancelButtonText: '取消',
-                    type: 'warning'
-                }).then(() => {
-                    let conn = this.jsPlumb.getConnections({
-                        source: this.activeLine.from,
-                        target: this.activeLine.targetId
-                    })[0];
-                    this.jsPlumb.deleteConnection(conn);
-                }).catch(() => {
-                });
-            }
         },
         // 删除线
         deleteLine (from, to) {
@@ -457,9 +412,9 @@ export default {
             if (this.isEdit) { return; }
             this.scaleN = (this.scaleN * ($evt['deltaY'] > 0 ? 0.9 : 1.1)).toFixed(2) * 1;
         },
-        edit() {
-          this.scaleN = 1;
-          this.isEdit = !this.isEdit;this.init();
+        edit () {
+            this.scaleN = 1;
+            this.isEdit = !this.isEdit; this.init();
         }
     }
 };

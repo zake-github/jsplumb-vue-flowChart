@@ -136,7 +136,7 @@ export const easyFlowMixin = {
                     outlineStroke: 'transparent',
                     // 线外边的宽，值越大，线的点击范围越大
                     outlineWidth: 10
-                },
+                }
                 // connectorHoverStyle: {stroke: 'red', strokeWidth: 2}
             },
             jsplumbTargetOptions: {
@@ -147,7 +147,7 @@ export const easyFlowMixin = {
                 anchor: 'Continuous',
                 allowLoopback: true,
                 dropOptions: {hoverClass: 'ef-drop-hover'}
-            },
+            }
         };
     }
 };

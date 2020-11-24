@@ -1,116 +1,3 @@
-let dataB = {
-    name: '流程B',
-    nodeList: [
-        {
-            id: 'nodeA',
-            parentIds: [],
-            childrenIds: ['nodeB'],
-            name: '流程B-节点A',
-            type: 'start',
-            left: '300',
-            top: '20',
-            ico: 'el-icon-user-solid',
-            state: 'success'
-            // viewOnly: true
-        },
-        {
-            id: 'nodeB',
-            parentIds: ['nodeA'],
-            childrenIds: ['nodeC', 'nodeD'],
-            name: '流程B-节点B',
-            type: 'diamond',
-            left: '600',
-            top: '120',
-            ico: 'el-icon-user-solid',
-            state: 'warning'
-        },
-        {
-            id: 'nodeC',
-            parentIds: ['nodeB'],
-            childrenIds: ['nodeF'],
-            name: '流程B-节点C',
-            type: 'task',
-            left: '300',
-            top: '300',
-            ico: 'el-icon-user-solid',
-            state: 'running'
-        },
-        {
-            id: 'nodeD',
-            parentIds: ['nodeB'],
-            childrenIds: ['nodeE'],
-            name: '流程B-节点D',
-            type: 'task',
-            left: '300',
-            top: '20',
-            ico: 'el-icon-user-solid',
-            state: 'success'
-            // viewOnly: true
-        },
-        {
-            id: 'nodeE',
-            parentIds: ['nodeD'],
-            childrenIds: ['nodeF'],
-            name: '流程B-节点E',
-            type: 'task',
-            left: '600',
-            top: '120',
-            ico: 'el-icon-user-solid',
-            state: 'warning'
-        },
-        {
-            id: 'nodeF',
-            parentIds: ['nodeC', 'nodeD'],
-            childrenIds: [],
-            name: '流程B-节点F',
-            type: 'task',
-            left: '300',
-            top: '300',
-            ico: 'el-icon-user-solid',
-            state: 'running'
-        }
-    ],
-    lineList: [
-        {
-            id: 'line1',
-            from: 'nodeA',
-            to: 'nodeB',
-            anchor: ['Bottom', 'Top'],
-            label: '条件A'
-        },
-        {
-            id: 'line2',
-            from: 'nodeB',
-            to: 'nodeC',
-            anchor: ['Right', 'Top'],
-            label: '条件B'
-        },
-        {
-            id: 'line3',
-            from: 'nodeB',
-            to: 'nodeD',
-            anchor: ['Bottom', 'Right']
-        },
-        {
-            id: 'line4',
-            from: 'nodeD',
-            to: 'nodeE',
-            anchor: ['Bottom', 'Right']
-        },
-        {
-            id: 'line5',
-            from: 'nodeC',
-            to: 'nodeF',
-            anchor: ['Bottom', 'Right']
-        },
-        {
-            id: 'line5',
-            from: 'nodeE',
-            to: 'nodeF',
-            anchor: ['Bottom', 'Right']
-        }
-    ]
-};
 let dataA = {
     name: '流程A',
     nodeList: [
@@ -232,94 +119,91 @@ let dataA = {
             id: 'line1',
             from: 'nodeA',
             to: 'nodeB',
-            anchor: ["Bottom", "Top"],
+            anchor: ['Bottom', 'Top'],
             label: '条件A'
         },
         {
             id: 'line2',
             from: 'nodeB',
             to: 'nodeC',
-            anchor: ["Right", "Left"],
+            anchor: ['Right', 'Left'],
             label: '条件B'
         },
         {
             id: 'line3',
             from: 'nodeB',
             to: 'nodeJ',
-            anchor: ["Left", "Left"]
+            anchor: ['Left', 'Left']
         },
         {
             id: 'line4',
             from: 'nodeC',
             to: 'nodeD',
-            anchor: ["Bottom", "Top"]
+            anchor: ['Bottom', 'Top']
         },
         {
             id: 'line5',
             from: 'nodeC',
             to: 'nodeE',
-            anchor: ["Right", "Top"]
+            anchor: ['Right', 'Top']
         },
         {
             id: 'line6',
             from: 'nodeD',
             to: 'nodeJ',
-            anchor: ["Left", "Top"]
+            anchor: ['Left', 'Top']
         },
         {
             id: 'line7',
             from: 'nodeE',
             to: 'nodeA',
-            anchor: ["Right", "Right"]
+            anchor: ['Right', 'Right']
         },
         {
             id: 'line8',
             from: 'nodeE',
             to: 'nodeG',
-            anchor: ["Left", "Top"]
+            anchor: ['Left', 'Top']
         },
         {
             id: 'line9',
             from: 'nodeF',
             to: 'nodeD',
-            anchor: ["Top", "Bottom"]
+            anchor: ['Top', 'Bottom']
         },
         {
             id: 'line10',
             from: 'nodeG',
             to: 'nodeF',
-            anchor: ["Left", "Bottom"]
+            anchor: ['Left', 'Bottom']
         },
         {
             id: 'line11',
             from: 'nodeG',
             to: 'nodeH',
-            anchor: ["Right", "Left"]
+            anchor: ['Right', 'Left']
         },
         {
             id: 'line12',
             from: 'nodeH',
             to: 'nodeI',
-            anchor: ["Bottom", "Top"]
+            anchor: ['Bottom', 'Top']
         },
         {
             id: 'line13',
             from: 'nodeI',
             to: 'nodeA',
-            anchor: ["Right", "Top"]
+            anchor: ['Right', 'Top']
         },
         {
             id: 'line14',
             from: 'nodeI',
             to: 'nodeJ',
-            anchor: ["Bottom", "Right"]
+            anchor: ['Bottom', 'Right']
         }
     ]
 };
 
-export function getDataB () {
-    return dataB;
-}
 export function getDataA () {
     return dataA;
 }
